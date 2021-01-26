@@ -81,7 +81,7 @@ const selectors: selectorInterface = {
     LAST_NAME: '[data-name="last-name"]',
     HERO_SUBTITLE: '[data-name="hero-subtitle"]',
     HERO_PIC: '[data-name="hero-pic"]',
-    M_TEXT: '[data-name="m-text"]',
+    M_TEXT: '[data-name="main-text"]',
     SCREEN_BLIND: '[data-name="screen-blind"]',
     BOX: '[data-name="box"]',
 }
@@ -131,16 +131,16 @@ const imageUrls_sm: Array<string> = [
     'images/slider-7_sm.jpg',
 ];
 
-const dates: Array<string> = ['1917','1940','1963','1971','1974','1997','2001'];
+const dates: Array<string> = ['dates1','dates2','dates3','dates4','dates5','dates6','dates7'];
 
 const info: Array<string> = [
-    'Katharine Meyer was born in New York City, the fourth of five children. Her wealthy father purchased The Washington Post in 1933.', 
-    'Firma Huncwot ogłoszona najlepszym pracodawcą roku.',
-    'Pozdrowienia dla całej ekipy Huncwota.',
-    'Huncwot robi najlepsze kreatywne strony w całym internecie (poza dark webem).',
-    'Całemu zespołowi życzy sie miłego i słonecznego dnia.',
-    'A po pracy zasłużonego odpoczynku w gronie rodziny i przyjaciół.',
-    'To już ostatni slajd, jak go przeczytasz, wróć do pracy nad super animacją :)'
+    'info1', 
+    'info2',
+    'info3',
+    'info4',
+    'info5',
+    'info6',
+    'info7'
 ];
 
 let currentSlide: number = 1;
@@ -316,22 +316,22 @@ const animateHero = () => {
 
     const { FIRST_NAME, LAST_NAME, HERO_SUBTITLE, HERO_PIC, M_TEXT } = selectors;
         
-    heroTimeline.set(FIRST_NAME, {x: -50, y: -50, opacity: 0, rotation: 30});
+    heroTimeline.set(FIRST_NAME, {x: -50, y: -50, opacity: 1, rotation: 30});
     heroTimeline.to(FIRST_NAME, {x: -10, y: 0, opacity: 1, duration: .3, rotation: 0, stagger: 0.1}).delay(0);
 
-    heroTimeline.set(LAST_NAME, {x: -50, y: 100, opacity: 0, rotation: 30});
+    heroTimeline.set(LAST_NAME, {x: -50, y: 100, opacity: 1, rotation: 30});
     heroTimeline.to(LAST_NAME, {x: -10, y: 0, opacity: 1, duration: 1, rotation: 0, stagger: 0.1}).delay(.5);
 
-    heroTimeline.set(HERO_SUBTITLE, {y: 200, opacity: 0});
+    heroTimeline.set(HERO_SUBTITLE, {y: 200, opacity: 1});
     heroTimeline.to(HERO_SUBTITLE, {y: 0, opacity: 1, duration: 1}).delay(0);
 
-    heroTimeline.set(HERO_PIC, {x: 30, y: 30, opacity: 0});
+    heroTimeline.set(HERO_PIC, {x: 30, y: 30, opacity: 1});
     heroTimeline.to(HERO_PIC, {x: 0, y: 0, opacity: 1, duration: 1}).delay(0);
 
-    heroTimeline.set(M_TEXT, {x: 30, y: 300, opacity: 0});
-    heroTimeline.to(M_TEXT, {x: 0, y: 0, opacity: 1, duration: 3, onComplete: () => {
-        setTimeout(() => heroTimeline.kill(), 2000);
-    }}).delay(0);
+    // heroTimeline.set(M_TEXT, {x: 30, y: 300, opacity: 1});
+    // heroTimeline.to(M_TEXT, {x: 0, y: 0, opacity: 1, duration: 3, onComplete: () => {
+    //     setTimeout(() => heroTimeline.kill(), 2000);
+    // }}).delay(0);
        
     heroTimeline.play();
 
