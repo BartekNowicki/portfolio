@@ -143,8 +143,18 @@ const info: Array<string> = [
     'info7'
 ];
 
-let currentSlide: number = 1;
+const closureIIFE = (() => {
+    console.log('WORKING CLOSURE MAGIC');
+    let currentSlide: number = 1;
+    const currentSlideGetter = () => currentSlide;
+    const currentSlideSetter = (value: number) => currentSlide = value;
 
+    return {
+        getCurrentSlide: currentSlideGetter,
+        setCurrentSlide: currentSlideSetter,
+        speak: () => console.log('CLOSURE UP AND RUNNING'),
+    }
+})();
 
 
 const grabDomNodes = (selectors: selectorInterface) => {
@@ -216,29 +226,29 @@ const activePrevButton = (isActive: Boolean) => {
 
 const showSlide = (sliderScreen: HTMLElement, counter: number, dots: Array<HTMLElement>) => {
 
-    let useimageUrls: Array<string>;
-
+    const { getCurrentSlide, setCurrentSlide } = closureIIFE;
     const { leftArrow, rightArrow } = DOM_NODES;
-
+    console.log('CURRENT SLIDE: ', getCurrentSlide());
+    let useimageUrls: Array<string>;
     window.innerWidth >= 1024 ? useimageUrls = [...imageUrls] : useimageUrls = [...imageUrls_sm];
         
     if(!sliderScreen) return
 
-    if (currentSlide < 1) {
-        currentSlide = 1;
-    } else if (currentSlide > useimageUrls.length) {
-        currentSlide = useimageUrls.length;
+    if (getCurrentSlide() < 1) {
+        setCurrentSlide(1);
+    } else if (getCurrentSlide() > useimageUrls.length) {
+        setCurrentSlide(useimageUrls.length);
     } 
 
     //EDGE CASE: CLICKED ON A DISABLED ARROW BUTTON:
-    if (currentSlide < 2 && !leftArrow.classList.contains('active')) return
-    if (currentSlide > imageUrls.length - 1 && !rightArrow.classList.contains('active')) return
+    if (getCurrentSlide() < 2 && !leftArrow.classList.contains('active')) return
+    if (getCurrentSlide() > imageUrls.length - 1 && !rightArrow.classList.contains('active')) return
 
     
-    if (currentSlide === 1) {
+    if (getCurrentSlide() === 1) {
         activeNextButton(true);
         activePrevButton(false);
-    } else if (currentSlide === useimageUrls.length) {
+    } else if (getCurrentSlide() === useimageUrls.length) {
         activeNextButton(false);
         activePrevButton(true);
     } else {
@@ -254,20 +264,17 @@ const showSlide = (sliderScreen: HTMLElement, counter: number, dots: Array<HTMLE
     
     slideTransitionTimeline.to(screenBlind, {x: -screenWidth, duration: 0.1, onComplete: () => {    
         sliderScreen.style.backgroundImage = `url('${useimageUrls[currentSlide - 1]}')`;
-        dateItem.innerText = `${dates[currentSlide - 1]}`;
-        infoItem.innerText = `${info[currentSlide - 1]}`;
-        dateBgItem.style.top = `${9 + 19 * (currentSlide - 1)}px`;
+        dateItem.innerText = `${dates[getCurrentSlide() - 1]}`;
+        infoItem.innerText = `${info[getCurrentSlide() - 1]}`;
+        dateBgItem.style.top = `${9 + 19 * (getCurrentSlide() - 1)}px`;
         dots.forEach(dot => dot.classList.remove('dotActive'));
-        dots[currentSlide - 1].classList.add('dotActive');
+        dots[getCurrentSlide() - 1].classList.add('dotActive');
     }});
 
     slideTransitionTimeline.to(screenBlind, {x: 10, duration: 1, onComplete: () => {
         setTimeout(() => slideTransitionTimeline.kill(), 0);
-    }});
-   
+    }});   
 }
-
-
 
 const initiateSlider = (nodes: nodesInterface, imageUrls: Array<string>, imageUrls_sm: Array<string>) => {
     
@@ -277,12 +284,14 @@ const initiateSlider = (nodes: nodesInterface, imageUrls: Array<string>, imageUr
     
     const dots = [dot1, dot2, dot3, dot4, dot5, dot6, dot7];
     const datelinks = [dateLink1, dateLink2, dateLink3, dateLink4, dateLink5, dateLink6, dateLink7];
+
+    const { getCurrentSlide, setCurrentSlide } = closureIIFE;
     
     dots.forEach((dot, index) => {
         dot.style.left = `${index * 24}px`;
         dot.addEventListener('click', () => {
-            currentSlide = index + 1;
-            showSlide(sliderScreen, currentSlide, dots);            
+            setCurrentSlide(index + 1);
+            showSlide(sliderScreen, getCurrentSlide(), dots);            
         });
     });
 
@@ -290,25 +299,33 @@ const initiateSlider = (nodes: nodesInterface, imageUrls: Array<string>, imageUr
         datelink.style.top = `${index * 19}px`;
         
         datelink.addEventListener('click', () => {
-            currentSlide = index + 1;
-            showSlide(sliderScreen, currentSlide, dots);            
+            setCurrentSlide(index + 1);
+            showSlide(sliderScreen, getCurrentSlide(), dots);            
         });
     });
 
     activeNextButton(true);
     activePrevButton(false);
 
-    rightArrow.addEventListener('click', () => showSlide(sliderScreen, currentSlide++, dots));
-    leftArrow.addEventListener('click', () => showSlide(sliderScreen, currentSlide--, dots));
+    rightArrow.addEventListener('click', () => {
+        setCurrentSlide(getCurrentSlide() + 1);
+        showSlide(sliderScreen, getCurrentSlide(), dots);
+    });
+
+    leftArrow.addEventListener('click', () => {
+        setCurrentSlide(getCurrentSlide() - 1);
+        showSlide(sliderScreen, getCurrentSlide(), dots);
+    });
    
     sliderScreen.style.backgroundImage = `url('${imageUrls[0]}')`;
     DOM_NODES.dateItem.innerText = `${dates[0]}`;
     DOM_NODES.infoItem.innerText = `${info[0]}`;
 
+    closureIIFE.speak();
+    console.log('INITIATING SLIDE:', getCurrentSlide());
+    
     showSlide(sliderScreen, 1, dots);
 }
-
-
 
 const animateHero = () => {
         
@@ -337,17 +354,12 @@ const animateHero = () => {
 
 }
 
-
-
-const domLoaded = (e: Event) => {
-    
+const domLoaded = (e: Event) => {    
     window.removeEventListener('load', domLoaded);
     grabDomNodes(selectors);
     initiateSlider(DOM_NODES, imageUrls, imageUrls_sm);
     animateHero();
 }
-
-
 
 window.addEventListener('load', domLoaded);
 
