@@ -263,7 +263,7 @@ const showSlide = (sliderScreen: HTMLElement, counter: number, dots: Array<HTMLE
     slideTransitionTimeline.set(screenBlind, {x: -screenWidth});
     
     slideTransitionTimeline.to(screenBlind, {x: -screenWidth, duration: 0.1, onComplete: () => {    
-        sliderScreen.style.backgroundImage = `url('${useimageUrls[currentSlide - 1]}')`;
+        sliderScreen.style.backgroundImage = `url('${useimageUrls[getCurrentSlide() - 1]}')`;
         dateItem.innerText = `${dates[getCurrentSlide() - 1]}`;
         infoItem.innerText = `${info[getCurrentSlide() - 1]}`;
         dateBgItem.style.top = `${9 + 19 * (getCurrentSlide() - 1)}px`;
