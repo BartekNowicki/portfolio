@@ -62,8 +62,8 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
     &__first-name {
       border: 5px solid rgb(168, 245, 14);
       position: absolute;
-      left: 0px;
-      top: 0%;
+      left: 10%;
+      top: 10%;
       // height: 113px;
       // width: 586px;
       color: #420000;
@@ -80,8 +80,8 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
     &__last-name {
       border: 1px solid rgb(58, 87, 1);
       position: absolute;
-      left: 0px;
-      top: 5%;
+      left: 10%;
+      top: 30%;
       // height: 113px;
       // width: 482px;
       color: #000000;
@@ -98,8 +98,8 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
     &__subtitle {
       border: 1px solid rgb(87, 126, 9);
       position: absolute;
-      left: 0px;
-      top: 10%;
+      left: 10%;
+      top: 50%;
       // height: 59px;
       // width: 451px;
       color: #666666;
@@ -113,8 +113,8 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
     }
     &__hero {
       position: absolute;
-      right: 0px;
-      top: 0px;
+      right: 20%;
+      top: 20%;
       height: 20%;
       // width: 525px;
       z-index: -1;
@@ -136,9 +136,9 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
     &__part-one {
       border: 2px solid rgb(9, 126, 58);
       position: absolute;
-      left: 53px;
+      left: 10%;
       top: 20%;
-      height: 50px;
+      // height: 50px;
       // width: 655px;
       color: #1F1F1F;
       font-family: "Lato";
@@ -152,9 +152,9 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
     &__part-two {
       border: 2px solid rgb(126, 9, 106);
       position: absolute;
-      left: 53px;
-      top: 30%;
-      height: 50px;
+      left: 10%;
+      top: 40%;
+      // height: 50px;
       // width: 653px;
       color: #1F1F1F;
       font-family: "Lato";
@@ -175,38 +175,40 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
   .slider {
     border: 5px solid rgb(126, 9, 9);
     position: absolute;
-    left: 0px;
-    top: 0;
-    height: 100%;
-    width: 100%;
+    left: 5%;
+    top: 5%;
+    height: 90%;
+    width: 90%;
     &__blind {
       border: 2px solid rgb(95, 126, 9);
       position: absolute;
-      left: 10%;
-      top: 0px;
-      height: 100%;
-      width: 100%;
+      left: 5%;
+      top: 5%;
+      height: 90%;
+      width: 90%;
       background-color: #F9F8F6;
       z-index: 3;
     }
     &__header {
+      border: 5px solid rgb(9, 83, 126);
       position: absolute;
-      left: 74px;
-      top: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 5%;
       height: 40px;
-      width: 100px;
+      width: 80%;
     }
-    &__prostokat-1 {
-      position: absolute;
-      left: 0px;
-      // ZMIANA DLA WYŚTODKOWANIA Z: top: 11px;
-      top: 5px;
-      height: 40px;
-      width: 2px;
-      // border: 0.07px solid #FFFFFF;
-      background-color: #AF8948;
-    }
+    // &__square1 {
+    //   border: 5px solid rgb(126, 9, 116);
+    //   position: absolute;
+    //   left: 0px;
+    //   top: 0px;
+    //   height: 100px;
+    //   width: 20px;
+    //   background-color: #AF8948;
+    // }
     &__text-click {
+      border: 5px solid rgb(160, 89, 89);
       position: absolute;
       left: 196px;
       top: 5px;
@@ -218,53 +220,46 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
       letter-spacing: 0;
       line-height: 19px;
     }
-    &__text-key {
+    &__text {
+      border: 5px solid rgb(117, 160, 89);
       position: absolute;
-      left: 0px;
-      top: 11px;
-      height: 18px;
-      width: 137px;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
       color: #1F1F1F;
       font-family: "Lato";
-      //ZMIANA Z WAROŚCI font-size: 24px;
       font-size: 22px;
       letter-spacing: 0;
       line-height: 24px;
     }
     &__arrows {
       position: absolute;
-      left: 0px;
+      right: 0px;
       top: 0px;
       height: 45px;
       width: 95px;
     }
-    &__Prostokąt-4 {
+    &__square4 {
       position: absolute;
       right: 18px;
       top: 13px;
       height: 18px;
       width: 9px;
-      //ZAMIANA NA TRÓJKĄTY
-      // border: 0.07px solid #FFFFFF;
-      // background-color: #F9F8F6;
       border-bottom: 9px solid transparent;
       border-top: 9px solid transparent;      
       border-right: 9px solid #F9F8F6;
     }
-    &__Prostokąt-3 {
+    &__square3 {
       position: absolute;
       left: 18px;
       top: 13px;
       height: 18px;
       width: 9px;
-      //ZAMIANA NA TRÓJKĄTY
-      // border: 0.07px solid #FFFFFF;
-      // background-color: #F9F8F6;
       border-bottom: 9px solid transparent;
       border-top: 9px solid transparent;      
       border-left: 9px solid #F9F8F6;
     }
-    &__Prostokąt-2L {
+    &__square2L {
       position: absolute;
       left: 0px;
       top: 0px;
@@ -274,7 +269,7 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
       opacity: 0.3;
       background-color: #8BB0AF;
     }
-    &__Prostokąt-2R {
+    &__square2R {
       position: absolute;
       left: 50px;
       top: 0px;
@@ -285,13 +280,13 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
       // background-color: #858585;
       background-color: #8BB0AF;
     }
-    &__timeline {
-      // border: 1px solid blueviolet;
+    &__projectList {
+      border: 1px solid blueviolet;
       position: absolute;
-      left: 0px;
-      top: 216px;
+      left: 5%;
+      top: 15%;
       height: 135px;
-      width: 36px;
+      width: 10%;
       font-family: "Lato";
       font-size: 10px;
       letter-spacing: 0;
@@ -300,17 +295,16 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
       text-align: left;
       overflow: hidden;
     }
-    &__Prostokąt-5 {
+    &__square-5 {
       position: absolute;
       left: 0px;
       height: 11px;
       width: 36px;
-      // border: 0.07px solid #FFFFFF;
       background-color: #8BB0AF;
       z-index: -1;
       transition: 0.75s;
     }
-    &__date-link {
+    &__project-link {
         z-index: 0;
         position: absolute;
         left: 0px;
@@ -336,35 +330,41 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
         }
         
     }
-    &__bullets {
+    &__dots {
+      border: 5px solid #df0909;
       position: absolute;
-      left: 50px;
-      top: 100px;
-      height: 12px;
-      width: 156px;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 5%;
+      height: 5%;
+      width: 50%;
     }
     &__dot {
       position: absolute;
-      top: 0;
+      top: 0px;
       left: 0px;
-      height: 12px;
-      width: 12px;
+      height: 20px;
+      width: 20px;
       border: 1px solid #666666;
       border-radius: 50%;
-      background-color: #F9F8F6;
       transition: 0.5s;
+      
       cursor: pointer;
       &:hover {
         background-color: #8BB0AF;
         transform: scale(1.4);
       }
     }
-    &__item-01 {
+    &__screen {
+      border: 5px solid rgb(175, 206, 0);
       position: absolute;
-      left: 64px;
-      top: 64px;
-      height: 480px;
-      width: 100px;
+      left: 20%;
+      top: 20%;
+      height: 70%;
+      width: 70%;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
     }
     &__line {
       position: absolute;
@@ -372,11 +372,10 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
       top: 0px;
       height: 2px;
       width: 55px;
-      // border: 0.07px solid #FFFFFF;
       background-color: #8BB0AF;
       z-index: 3;     
     }
-    &__info-item {
+    &__projectInfo {
       position: absolute;
       left: 0px;
       top: 50px;
@@ -389,10 +388,11 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
       line-height: 25px;
       z-index: 3;      
     }
-    &__date-item {
+    &__projectName {
+      border: 5px solid #1d0101;
       position: absolute;
       left: 0px;
-      top: 50px;
+      top: 0px;
       height: 19px;
       width: 54px;
       color: #FFFFFF;
@@ -403,22 +403,22 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
       line-height: 26px;
       z-index: 3;
     }
-    &__box {
+    &__description {
       position: absolute;
-      left: 0px;
-      top: 50px;
-      height: 50px;
-      width: 100px;
-      border: 0.07px solid #FFFFFF;
+      right: 5%;
+      bottom: 5%;
+      height: 20%;
+      width: 20%;
+      border: 5px solid #ee1919;
       background-color: #2B2B2B;
       z-index: 2;
     }
-    &__slider-1 {
+    &__slider {
       position: absolute;
-      left: 9px;
-      top: 9px;
-      height: 100px;
-      width: 100%;
+      left: 5%;
+      top: 5%;
+      height: 80%;
+      width: 80%;
       box-shadow: 0 0 10px 1px #111111;
       z-index: 1;
       background-image: none;
@@ -441,7 +441,7 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
     bottom: 0px;
     background-color: #2B2B2B;
     &__info {
-      border: 1px solid #c0b0b0;      
+      border: 1px solid #c0b0b0;    
       color: #F9F8F6;
       font-family: $secondaryFont;
       font-size: 2rem;

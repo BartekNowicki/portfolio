@@ -12,15 +12,15 @@ interface selectorInterface {
     DOT5: string;
     DOT6: string;
     DOT7: string;
-    DATELINK1: string;
-    DATELINK2: string;
-    DATELINK3: string;
-    DATELINK4: string;
-    DATELINK5: string;
-    DATELINK6: string;
-    DATELINK7: string;
-    DATE_ITEM: string;
-    DATE_BGITEM: string,
+    projectLink1: string;
+    projectLink2: string;
+    projectLink3: string;
+    projectLink4: string;
+    projectLink5: string;
+    projectLink6: string;
+    projectLink7: string;
+    PROJECT_ITEM: string;
+    PROJECT_BGITEM: string,
     INFO_ITEM: string;
     FIRST_NAME: string;
     LAST_NAME: string;
@@ -28,7 +28,7 @@ interface selectorInterface {
     HERO_PIC: string;
     M_TEXT: string;
     SCREEN_BLIND: string;
-    BOX: string;
+    DESCRIPTION: string;
 }
 
 interface nodesInterface {
@@ -42,18 +42,18 @@ interface nodesInterface {
     dot5: HTMLElement | null; 
     dot6: HTMLElement | null;
     dot7: HTMLElement | null;
-    dateLink1: HTMLElement | null;
-    dateLink2: HTMLElement | null;
-    dateLink3: HTMLElement | null;
-    dateLink4: HTMLElement | null;
-    dateLink5: HTMLElement | null;
-    dateLink6: HTMLElement | null;
-    dateLink7: HTMLElement | null;
-    dateItem: HTMLElement | null;
-    infoItem: HTMLElement | null;
-    dateBgItem: HTMLElement | null;
+    projectLink1: HTMLElement | null;
+    projectLink2: HTMLElement | null;
+    projectLink3: HTMLElement | null;
+    projectLink4: HTMLElement | null;
+    projectLink5: HTMLElement | null;
+    projectLink6: HTMLElement | null;
+    projectLink7: HTMLElement | null;
+    projectName: HTMLElement | null;
+    projectInfo: HTMLElement | null;
+    projectBgItem: HTMLElement | null;
     screenBlind: HTMLElement | null;
-    box: HTMLElement | null;
+    description: HTMLElement | null;
 }
 
 const selectors: selectorInterface = {
@@ -67,23 +67,23 @@ const selectors: selectorInterface = {
     DOT5: '[data-name="dot5"]',
     DOT6: '[data-name="dot6"]',
     DOT7: '[data-name="dot7"]', 
-    DATELINK1: '[data-name="dateLink1"]',
-    DATELINK2: '[data-name="dateLink2"]',
-    DATELINK3: '[data-name="dateLink3"]',
-    DATELINK4: '[data-name="dateLink4"]',
-    DATELINK5: '[data-name="dateLink5"]',
-    DATELINK6: '[data-name="dateLink6"]',
-    DATELINK7: '[data-name="dateLink7"]',
-    DATE_ITEM: '[data-name="dateItem"]',
-    INFO_ITEM: '[data-name="infoItem"]',
-    DATE_BGITEM: '[data-name="dateBg"]',
+    projectLink1: '[data-name="projectLink1"]',
+    projectLink2: '[data-name="projectLink2"]',
+    projectLink3: '[data-name="projectLink3"]',
+    projectLink4: '[data-name="projectLink4"]',
+    projectLink5: '[data-name="projectLink5"]',
+    projectLink6: '[data-name="projectLink6"]',
+    projectLink7: '[data-name="projectLink7"]',
+    PROJECT_ITEM: '[data-name="projectName"]',
+    INFO_ITEM: '[data-name="projectInfo"]',
+    PROJECT_BGITEM: '[data-name="projectBg"]',
     FIRST_NAME: '[data-name="fist-name"]',
     LAST_NAME: '[data-name="last-name"]',
     HERO_SUBTITLE: '[data-name="hero-subtitle"]',
     HERO_PIC: '[data-name="hero-pic"]',
     M_TEXT: '[data-name="main-text"]',
     SCREEN_BLIND: '[data-name="screen-blind"]',
-    BOX: '[data-name="box"]',
+    DESCRIPTION: '[data-name="description"]',
 }
 
 let DOM_NODES: nodesInterface = {
@@ -97,41 +97,51 @@ let DOM_NODES: nodesInterface = {
     dot5: null, 
     dot6: null,
     dot7: null,
-    dateLink1: null,
-    dateLink2: null,
-    dateLink3: null,
-    dateLink4: null,
-    dateLink5: null,
-    dateLink6: null,
-    dateLink7: null,
-    dateItem: null,
-    infoItem: null,
-    dateBgItem: null,
+    projectLink1: null,
+    projectLink2: null,
+    projectLink3: null,
+    projectLink4: null,
+    projectLink5: null,
+    projectLink6: null,
+    projectLink7: null,
+    projectName: null,
+    projectInfo: null,
+    projectBgItem: null,
     screenBlind: null,
-    box: null,
+    description: null,
 };
 
-const imageUrls: Array<string> = [
-    'images/slider-1.jpg',
-    'images/slider-2.jpg',
-    'images/slider-3.jpg',
-    'images/slider-4.jpg',
-    'images/slider-5.jpg',
-    'images/slider-6.jpg',
-    'images/slider-7.jpg',
+const imageUrls_lg: Array<string> = [
+    'images/1_lg.jpg',
+    'images/2_lg.jpg',
+    'images/3_lg.jpg',
+    'images/4_lg.jpg',
+    'images/5_lg.jpg',
+    'images/6_lg.jpg',
+    'images/7_lg.jpg'
+];
+
+const imageUrls_md: Array<string> = [
+    'images/1_md.jpg',
+    'images/2_md.jpg',
+    'images/3_md.jpg',
+    'images/4_md.jpg',
+    'images/5_md.jpg',
+    'images/6_md.jpg',
+    'images/7_md.jpg'
 ];
 
 const imageUrls_sm: Array<string> = [
-    'images/slider-1_sm.jpg',
-    'images/slider-2_sm.jpg',
-    'images/slider-3_sm.jpg',
-    'images/slider-4_sm.jpg',
-    'images/slider-5_sm.jpg',
-    'images/slider-6_sm.jpg',
-    'images/slider-7_sm.jpg',
+    'images/1_sm.jpg',
+    'images/2_sm.jpg',
+    'images/3_sm.jpg',
+    'images/4_sm.jpg',
+    'images/5_sm.jpg',
+    'images/6_sm.jpg',
+    'images/7_sm.jpg'
 ];
 
-const dates: Array<string> = ['dates1','dates2','dates3','dates4','dates5','dates6','dates7'];
+const projects: Array<string> = ['project1','project2','project3','project4','project5','project6','project7'];
 
 const info: Array<string> = [
     'info1', 
@@ -168,18 +178,18 @@ const grabDomNodes = (selectors: selectorInterface) => {
     DOM_NODES.dot5 = document.querySelector(selectors.DOT5);
     DOM_NODES.dot6 = document.querySelector(selectors.DOT6);
     DOM_NODES.dot7 = document.querySelector(selectors.DOT7);
-    DOM_NODES.dateLink1 = document.querySelector(selectors.DATELINK1);
-    DOM_NODES.dateLink2 = document.querySelector(selectors.DATELINK2);
-    DOM_NODES.dateLink3 = document.querySelector(selectors.DATELINK3);
-    DOM_NODES.dateLink4 = document.querySelector(selectors.DATELINK4);
-    DOM_NODES.dateLink5 = document.querySelector(selectors.DATELINK5);
-    DOM_NODES.dateLink6 = document.querySelector(selectors.DATELINK6);
-    DOM_NODES.dateLink7 = document.querySelector(selectors.DATELINK7);
-    DOM_NODES.dateItem = document.querySelector(selectors.DATE_ITEM);
-    DOM_NODES.infoItem = document.querySelector(selectors.INFO_ITEM);
-    DOM_NODES.dateBgItem = document.querySelector(selectors.DATE_BGITEM);
+    DOM_NODES.projectLink1 = document.querySelector(selectors.projectLink1);
+    DOM_NODES.projectLink2 = document.querySelector(selectors.projectLink2);
+    DOM_NODES.projectLink3 = document.querySelector(selectors.projectLink3);
+    DOM_NODES.projectLink4 = document.querySelector(selectors.projectLink4);
+    DOM_NODES.projectLink5 = document.querySelector(selectors.projectLink5);
+    DOM_NODES.projectLink6 = document.querySelector(selectors.projectLink6);
+    DOM_NODES.projectLink7 = document.querySelector(selectors.projectLink7);
+    DOM_NODES.projectName = document.querySelector(selectors.PROJECT_ITEM);
+    DOM_NODES.projectInfo = document.querySelector(selectors.INFO_ITEM);
+    DOM_NODES.projectBgItem = document.querySelector(selectors.PROJECT_BGITEM);
     DOM_NODES.screenBlind = document.querySelector(selectors.SCREEN_BLIND);
-    DOM_NODES.box = document.querySelector(selectors.BOX);
+    DOM_NODES.description = document.querySelector(selectors.DESCRIPTION);
     
     if (!DOM_NODES.leftArrow 
         || !DOM_NODES.rightArrow
@@ -191,11 +201,11 @@ const grabDomNodes = (selectors: selectorInterface) => {
         || !DOM_NODES.dot5
         || !DOM_NODES.dot6
         || !DOM_NODES.dot7
-        || !DOM_NODES.dateItem
-        || !DOM_NODES.infoItem
-        || !DOM_NODES.dateBgItem
+        || !DOM_NODES.projectName
+        || !DOM_NODES.projectInfo
+        || !DOM_NODES.projectBgItem
         || !DOM_NODES.screenBlind
-        || !DOM_NODES.box) {
+        || !DOM_NODES.description) {
     console.warn('dom elements missing, animations incomplete');
    }
 }
@@ -230,7 +240,18 @@ const showSlide = (sliderScreen: HTMLElement, counter: number, dots: Array<HTMLE
     const { leftArrow, rightArrow } = DOM_NODES;
     console.log('CURRENT SLIDE: ', getCurrentSlide());
     let useimageUrls: Array<string>;
-    window.innerWidth >= 1024 ? useimageUrls = [...imageUrls] : useimageUrls = [...imageUrls_sm];
+
+
+    if (window.innerWidth >= 800) {
+        useimageUrls = [...imageUrls_lg];
+    } else if (window.innerWidth >= 640) {
+        useimageUrls = [...imageUrls_md];
+    } else {
+        useimageUrls = [...imageUrls_sm];
+    }
+    
+    
+
         
     if(!sliderScreen) return
 
@@ -242,7 +263,7 @@ const showSlide = (sliderScreen: HTMLElement, counter: number, dots: Array<HTMLE
 
     //EDGE CASE: CLICKED ON A DISABLED ARROW BUTTON:
     if (getCurrentSlide() < 2 && !leftArrow.classList.contains('active')) return
-    if (getCurrentSlide() > imageUrls.length - 1 && !rightArrow.classList.contains('active')) return
+    if (getCurrentSlide() > useimageUrls.length - 1 && !rightArrow.classList.contains('active')) return
 
     
     if (getCurrentSlide() === 1) {
@@ -256,7 +277,7 @@ const showSlide = (sliderScreen: HTMLElement, counter: number, dots: Array<HTMLE
         activePrevButton(true);
     }
     
-    const { dateItem, infoItem, dateBgItem, screenBlind } = DOM_NODES;
+    const { projectName, projectInfo, projectBgItem, screenBlind } = DOM_NODES;
     const screenWidth = screenBlind.offsetWidth;
     const slideTransitionTimeline = getTimeline();
     
@@ -264,9 +285,9 @@ const showSlide = (sliderScreen: HTMLElement, counter: number, dots: Array<HTMLE
     
     slideTransitionTimeline.to(screenBlind, {x: -screenWidth, duration: 0.1, onComplete: () => {    
         sliderScreen.style.backgroundImage = `url('${useimageUrls[getCurrentSlide() - 1]}')`;
-        dateItem.innerText = `${dates[getCurrentSlide() - 1]}`;
-        infoItem.innerText = `${info[getCurrentSlide() - 1]}`;
-        dateBgItem.style.top = `${9 + 19 * (getCurrentSlide() - 1)}px`;
+        projectName.innerText = `${projects[getCurrentSlide() - 1]}`;
+        projectInfo.innerText = `${info[getCurrentSlide() - 1]}`;
+        projectBgItem.style.top = `${9 + 19 * (getCurrentSlide() - 1)}px`;
         dots.forEach(dot => dot.classList.remove('dotActive'));
         dots[getCurrentSlide() - 1].classList.add('dotActive');
     }});
@@ -276,14 +297,15 @@ const showSlide = (sliderScreen: HTMLElement, counter: number, dots: Array<HTMLE
     }});   
 }
 
-const initiateSlider = (nodes: nodesInterface, imageUrls: Array<string>, imageUrls_sm: Array<string>) => {
+const initiateSlider = (nodes: nodesInterface) => {
     
     const { leftArrow, rightArrow, sliderScreen } = nodes;
     const { dot1, dot2, dot3, dot4, dot5, dot6, dot7 } = nodes;
-    const { dateLink1, dateLink2, dateLink3, dateLink4, dateLink5, dateLink6, dateLink7 } = nodes;
+
+    const { projectLink1, projectLink2, projectLink3, projectLink4, projectLink5, projectLink6, projectLink7 } = nodes;
     
     const dots = [dot1, dot2, dot3, dot4, dot5, dot6, dot7];
-    const datelinks = [dateLink1, dateLink2, dateLink3, dateLink4, dateLink5, dateLink6, dateLink7];
+    const projectLinks = [projectLink1, projectLink2, projectLink3, projectLink4, projectLink5, projectLink6, projectLink7];
 
     const { getCurrentSlide, setCurrentSlide } = closureIIFE;
     
@@ -295,10 +317,10 @@ const initiateSlider = (nodes: nodesInterface, imageUrls: Array<string>, imageUr
         });
     });
 
-    datelinks.forEach((datelink, index) => {
-        datelink.style.top = `${index * 19}px`;
+    projectLinks.forEach((projectLink, index) => {
+        projectLink.style.top = `${index * 19}px`;
         
-        datelink.addEventListener('click', () => {
+        projectLink.addEventListener('click', () => {
             setCurrentSlide(index + 1);
             showSlide(sliderScreen, getCurrentSlide(), dots);            
         });
@@ -317,9 +339,9 @@ const initiateSlider = (nodes: nodesInterface, imageUrls: Array<string>, imageUr
         showSlide(sliderScreen, getCurrentSlide(), dots);
     });
    
-    sliderScreen.style.backgroundImage = `url('${imageUrls[0]}')`;
-    DOM_NODES.dateItem.innerText = `${dates[0]}`;
-    DOM_NODES.infoItem.innerText = `${info[0]}`;
+    sliderScreen.style.backgroundImage = `url('${imageUrls_lg[0]}')`;
+    DOM_NODES.projectName.innerText = `${projects[0]}`;
+    DOM_NODES.projectInfo.innerText = `${info[0]}`;
 
     closureIIFE.speak();
     console.log('INITIATING SLIDE:', getCurrentSlide());
@@ -357,7 +379,7 @@ const animateHero = () => {
 const domLoaded = (e: Event) => {    
     window.removeEventListener('load', domLoaded);
     grabDomNodes(selectors);
-    initiateSlider(DOM_NODES, imageUrls, imageUrls_sm);
+    initiateSlider(DOM_NODES);
     animateHero();
 }
 
