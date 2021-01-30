@@ -42,6 +42,7 @@ interface nodesInterface {
     dot5: HTMLElement | null; 
     dot6: HTMLElement | null;
     dot7: HTMLElement | null;
+    dots: HTMLElement[] | null;
     projectLink1: HTMLElement | null;
     projectLink2: HTMLElement | null;
     projectLink3: HTMLElement | null;
@@ -97,6 +98,7 @@ let DOM_NODES: nodesInterface = {
     dot5: null, 
     dot6: null,
     dot7: null,
+    dots: null,
     projectLink1: null,
     projectLink2: null,
     projectLink3: null,
@@ -141,7 +143,7 @@ const imageUrls_sm: Array<string> = [
     'images/7_sm.jpg'
 ];
 
-const projects: Array<string> = ['project1','project2','project3','project4','project5','project6','project7'];
+const projects: Array<string> = ['BOMBS','KIDCHESS','LANDING PAGE','SHERIFF','INTRO','HANGMAN','KWADRATY'];
 
 const info: Array<string> = [
     'info1', 
@@ -178,6 +180,15 @@ const grabDomNodes = (selectors: selectorInterface) => {
     DOM_NODES.dot5 = document.querySelector(selectors.DOT5);
     DOM_NODES.dot6 = document.querySelector(selectors.DOT6);
     DOM_NODES.dot7 = document.querySelector(selectors.DOT7);
+    DOM_NODES.dots = [
+        DOM_NODES.dot1,
+        DOM_NODES.dot2,
+        DOM_NODES.dot3,
+        DOM_NODES.dot4,
+        DOM_NODES.dot5,
+        DOM_NODES.dot6,
+        DOM_NODES.dot7,
+    ];
     DOM_NODES.projectLink1 = document.querySelector(selectors.projectLink1);
     DOM_NODES.projectLink2 = document.querySelector(selectors.projectLink2);
     DOM_NODES.projectLink3 = document.querySelector(selectors.projectLink3);
@@ -210,11 +221,7 @@ const grabDomNodes = (selectors: selectorInterface) => {
    }
 }
 
-
-
 const getTimeline = (): gsap.core.Timeline => gsap.timeline({ paused: false, ease: "none" });
-
-
 
 const activeNextButton = (isActive: Boolean) => {
     const { rightArrow } = DOM_NODES;
@@ -223,8 +230,6 @@ const activeNextButton = (isActive: Boolean) => {
     : rightArrow.classList.remove('active');
 }
 
-
-
 const activePrevButton = (isActive: Boolean) => {
     const { leftArrow } = DOM_NODES;
     isActive
@@ -232,15 +237,12 @@ const activePrevButton = (isActive: Boolean) => {
     : leftArrow.classList.remove('active');
 }
 
-
-
-const showSlide = (sliderScreen: HTMLElement, counter: number, dots: Array<HTMLElement>) => {
+const showSlide = (sliderScreen: HTMLElement) => {
 
     const { getCurrentSlide, setCurrentSlide } = closureIIFE;
-    const { leftArrow, rightArrow } = DOM_NODES;
+    const { leftArrow, rightArrow, dots } = DOM_NODES;
     console.log('CURRENT SLIDE: ', getCurrentSlide());
     let useimageUrls: Array<string>;
-
 
     if (window.innerWidth >= 800) {
         useimageUrls = [...imageUrls_lg];
@@ -249,33 +251,31 @@ const showSlide = (sliderScreen: HTMLElement, counter: number, dots: Array<HTMLE
     } else {
         useimageUrls = [...imageUrls_sm];
     }
-    
-    
-
         
-    if(!sliderScreen) return
+    if(!sliderScreen) return console.warn('THE SCREEN IS MISSING!');
 
-    if (getCurrentSlide() < 1) {
+    if (getCurrentSlide() === 0) {
         setCurrentSlide(1);
-    } else if (getCurrentSlide() > useimageUrls.length) {
+        return
+    } else if (getCurrentSlide() === useimageUrls.length + 1) {
         setCurrentSlide(useimageUrls.length);
+        return
     } 
 
-    //EDGE CASE: CLICKED ON A DISABLED ARROW BUTTON:
-    if (getCurrentSlide() < 2 && !leftArrow.classList.contains('active')) return
-    if (getCurrentSlide() > useimageUrls.length - 1 && !rightArrow.classList.contains('active')) return
-
+    activeNextButton(true);
+    activePrevButton(true);
     
     if (getCurrentSlide() === 1) {
-        activeNextButton(true);
         activePrevButton(false);
-    } else if (getCurrentSlide() === useimageUrls.length) {
+    } 
+    
+    if (getCurrentSlide() === useimageUrls.length) {
         activeNextButton(false);
-        activePrevButton(true);
-    } else {
-        activeNextButton(true);
-        activePrevButton(true);
     }
+
+    //EDGE CASE: CLICKED ON A DISABLED ARROW BUTTON:
+    // if (getCurrentSlide() === 1 && !leftArrow.classList.contains('active')) return
+    // if (getCurrentSlide() === useimageUrls.length && !rightArrow.classList.contains('active')) return
     
     const { projectName, projectInfo, projectBgItem, screenBlind } = DOM_NODES;
     const screenWidth = screenBlind.offsetWidth;
@@ -283,13 +283,17 @@ const showSlide = (sliderScreen: HTMLElement, counter: number, dots: Array<HTMLE
     
     slideTransitionTimeline.set(screenBlind, {x: -screenWidth});
     
-    slideTransitionTimeline.to(screenBlind, {x: -screenWidth, duration: 0.1, onComplete: () => {    
+    console.log('SLIDE SET');
+    slideTransitionTimeline.to(screenBlind, {x: -screenWidth, duration: 0.5, onComplete: () => {    
         sliderScreen.style.backgroundImage = `url('${useimageUrls[getCurrentSlide() - 1]}')`;
+        sliderScreen.style.backgroundRepeat = 'no-repeat';
+        sliderScreen.style.backgroundPosition = 'center';
         projectName.innerText = `${projects[getCurrentSlide() - 1]}`;
         projectInfo.innerText = `${info[getCurrentSlide() - 1]}`;
         projectBgItem.style.top = `${9 + 19 * (getCurrentSlide() - 1)}px`;
         dots.forEach(dot => dot.classList.remove('dotActive'));
         dots[getCurrentSlide() - 1].classList.add('dotActive');
+        
     }});
 
     slideTransitionTimeline.to(screenBlind, {x: 10, duration: 1, onComplete: () => {
@@ -310,10 +314,10 @@ const initiateSlider = (nodes: nodesInterface) => {
     const { getCurrentSlide, setCurrentSlide } = closureIIFE;
     
     dots.forEach((dot, index) => {
-        dot.style.left = `${index * 24}px`;
+        // dot.style.left = `${index * 24}px`;
         dot.addEventListener('click', () => {
             setCurrentSlide(index + 1);
-            showSlide(sliderScreen, getCurrentSlide(), dots);            
+            showSlide(sliderScreen);            
         });
     });
 
@@ -322,7 +326,7 @@ const initiateSlider = (nodes: nodesInterface) => {
         
         projectLink.addEventListener('click', () => {
             setCurrentSlide(index + 1);
-            showSlide(sliderScreen, getCurrentSlide(), dots);            
+            showSlide(sliderScreen);            
         });
     });
 
@@ -331,22 +335,23 @@ const initiateSlider = (nodes: nodesInterface) => {
 
     rightArrow.addEventListener('click', () => {
         setCurrentSlide(getCurrentSlide() + 1);
-        showSlide(sliderScreen, getCurrentSlide(), dots);
+        showSlide(sliderScreen);
     });
 
     leftArrow.addEventListener('click', () => {
         setCurrentSlide(getCurrentSlide() - 1);
-        showSlide(sliderScreen, getCurrentSlide(), dots);
+        showSlide(sliderScreen);
     });
    
-    sliderScreen.style.backgroundImage = `url('${imageUrls_lg[0]}')`;
-    DOM_NODES.projectName.innerText = `${projects[0]}`;
-    DOM_NODES.projectInfo.innerText = `${info[0]}`;
+    setTimeout(() => {
+
+        setCurrentSlide(1);
+        showSlide(sliderScreen);
+    }, 1000);
 
     closureIIFE.speak();
-    console.log('INITIATING SLIDE:', getCurrentSlide());
     
-    showSlide(sliderScreen, 1, dots);
+        
 }
 
 const animateHero = () => {
