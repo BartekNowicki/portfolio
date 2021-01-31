@@ -146,13 +146,19 @@ const imageUrls_sm: Array<string> = [
 const projects: Array<string> = ['BOMBS','KIDCHESS','LANDING PAGE','SHERIFF','INTRO','HANGMAN','KWADRATY'];
 
 const info: Array<string> = [
-    'info1', 
-    'info2',
-    'info3',
-    'info4',
-    'info5',
-    'info6',
-    'info7'
+    'Gra polegająca na zbieraniu punktów za każdy znikający blok. Spadające z góry czwórkami bloki można w locie przesuwać lub obracać. Znikają po ułożeniu w linii minimum trzech bloków tego samego koloru. Bloki, które zawierają bombę – wybuchają. Technologie: html, webpack 5, scss, javascript, svg, canvas, gsap 3.', 
+
+    'Gra wspomagająca naukę podstawowych ruchów szachowych. Bierki zachowują się „prawie” tak, jak prawdziwe bierki szachowe – z tym, że strzelają, ale za to zgodnie z regułami królewskiej gry. Technologie: html, webpack 5, scss, javascript, svg, gsap 3.',
+
+    'W pełni funkcjonalna komercyjna strona www. Technologie: html, css grid, svg, javascript.',
+
+    'Gra wspomagająca naukę nazw owoców, warzyw i kolorów w języku angielskim. Poruszając szeryfem w prawo i w lewo należy zestrzelić ikonkę, która pasuje do wyświetlonego w panelu hasła. Technologie: Create React App, hooki, typescript, scss, svg, gsap 3.',
+
+    'Moja strona – wizytówka przedstawiająca szacunkowe poziomy umiejętności front-endowych oraz back-endowych. Zawiera animacje css, canvas, gsap, oraz łączenie z zewnętrznym API. Technologie: Create React App, typescript, scss, svg, canvas, gsap 3.',
+
+    'Prosta mini-gra dla dzieci inspirowana „wisielcem”. Odgadnij zwierzę klikając w odpowiednie literki. Technologie: html, Webpack4, css flexbox, scss, javascript.',
+
+    'Kolejna prosta mini-gra dla dzieci. Zmierz się z komputerem w rozgrywce, która polega na wstawianiu kwadratów na planszę tak, aby łączyły się w trójki, które znikają. Technologie: html, webpack4, scss, javascript.'
 ];
 
 const closureIIFE = (() => {

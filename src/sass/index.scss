@@ -1,5 +1,6 @@
 $primaryFont: "font-family: 'Passion One', cursive;";
 $secondaryFont: "font-family: 'Roboto', sans-serif;";
+$projectLinkHeight: 15px;
 
 * {
     margin: 0;
@@ -283,10 +284,10 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
     &__projectList {
       border: 1px solid blueviolet;
       position: absolute;
-      left: 5%;
-      top: 15%;
-      height: 135px;
-      width: 10%;
+      left: 0%;
+      top: 0%;
+      height: $projectLinkHeight * 10;
+      width: 15%;
       font-family: "Lato";
       font-size: 10px;
       letter-spacing: 0;
@@ -308,7 +309,7 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
         z-index: 0;
         position: absolute;
         left: 0px;
-        height: 11px;
+        height: $projectLinkHeight;
         top: 0px;
         width: 36px;
         &::before {
@@ -361,10 +362,11 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
     &__screen {
       border: 5px solid rgb(175, 206, 0);
       position: absolute;
-      left: 20%;
+      left: 50%;
+      transform: translateX(-50%);
       top: 20%;
       height: 70%;
-      width: 70%;
+      width: 80%;
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
@@ -380,14 +382,14 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
     }
     &__description {
       position: absolute;
-      right: 5%;
-      bottom: 5%;
+      right: 2%;
+      bottom: 2%;
       height: 20%;
-      width: 20%;
+      width: 70%;
       border: 5px solid #ee1919;
       background-color: #2B2B2B;
       z-index: 2;
-      font-size: 1rem;
+      font-size: 1.2rem;
       color: #FFFFFF;
     }
     
@@ -400,7 +402,7 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
       // width: 54px;
       color: #FFFFFF;
       font-family: $primaryFont;
-      font-size: 1rem;
+      font-size: 1.2rem;
       font-weight: bold;
       // letter-spacing: 0;
       // line-height: 26px;
@@ -415,7 +417,7 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
       // width: 54px;
       color: #FFFFFF;
       font-family: $primaryFont;
-      font-size: 0.7rem;
+      // font-size: 50%;
       // font-weight: bold;
       // letter-spacing: 0;
       // line-height: 26px;
@@ -424,10 +426,10 @@ $secondaryFont: "font-family: 'Roboto', sans-serif;";
     
     &__slider {
       position: absolute;
-      left: 5%;
-      top: 5%;
-      height: 80%;
-      width: 80%;
+      left: 0%;
+      top: 0%;
+      height: 90%;
+      width: 100%;
       box-shadow: 0 0 10px 1px #111111;
       z-index: 1;
       background-image: none;
